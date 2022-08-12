@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <MergeRequestsList />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import { mapActions } from "vuex";
+import MergeRequestsList from "./components/MergeRequestsList.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    MergeRequestsList,
+  },
+  created() {
+    this.fetchUser();
+  },
+  methods: {
+    ...mapActions("user", ["fetchUser"]),
   },
 };
 </script>
@@ -21,8 +27,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 2rem;
 }
 </style>
